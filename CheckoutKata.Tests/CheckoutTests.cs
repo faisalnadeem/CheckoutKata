@@ -40,4 +40,72 @@ namespace CheckoutKata.Tests
             Assert.AreEqual(.50m, _checkout.Total());
         }
     }
+
+    [TestClass]
+    public class GivenItemsToScanWithSpecialOffer
+    {
+        readonly Checkout _checkout = new Checkout();
+
+        [TestInitialize]
+        public void WhenScanningItemsAtCheckout()
+        {
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+        }
+
+        [TestMethod]
+        public void ThenItemShouldBeScannedSuccessfully()
+        {
+            Assert.AreEqual(1.30m, _checkout.Total());
+        }
+    }
+    
+    [TestClass]
+    public class GivenItemsToScanWithPartialSpecialOffer
+    {
+        readonly Checkout _checkout = new Checkout();
+
+        [TestInitialize]
+        public void WhenScanningItemsAtCheckout()
+        {
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "B15"));
+
+        }
+
+        [TestMethod]
+        public void ThenItemShouldBeScannedSuccessfully()
+        {
+            Assert.AreEqual(2.10m, _checkout.Total());
+        }
+    }
+
+    [TestClass]
+    public class GivenItemsToScanWithMultipleSpecialOffers
+    {
+        readonly Checkout _checkout = new Checkout();
+
+        [TestInitialize]
+        public void WhenScanningItemsAtCheckout()
+        {
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "A99"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "B15"));
+            _checkout.Scan(FakeDataStore.Items().FirstOrDefault(x=> x.SKU == "B15"));
+        }
+
+        [TestMethod]
+        public void ThenItemShouldBeScannedSuccessfully()
+        {
+            Assert.AreEqual(3.05m, _checkout.Total());
+        }
+    }
 }
