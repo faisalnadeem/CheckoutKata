@@ -6,6 +6,24 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CheckoutKata.Tests
 {
     [TestClass]
+    public class GivenNoItemToScan
+    {
+        private readonly Checkout _checkout = new Checkout();
+
+        [TestInitialize]
+        public void WhenScanningAtCheckout()
+        {
+            _checkout.Scan(null);
+        }
+
+        [TestMethod]
+        public void ThenItemShouldBeScannedSuccessfully()
+        {
+            Assert.AreEqual(0m, _checkout.Total());
+        }
+    }
+    
+    [TestClass]
     public class GivenAnItemToScan
     {
         private readonly Checkout _checkout = new Checkout();
