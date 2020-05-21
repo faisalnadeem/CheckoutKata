@@ -36,11 +36,28 @@ namespace CheckoutKata.Code
             if (item == null) return;
             _items.Add(item);
         }
+        
+        public void Scan(Item item, int quantity)
+        {
+            if (item == null || quantity == 0) return;
+
+            for(var i=1; i<= quantity; i++)
+                _items.Add(item);
+        }
+        public void Scan(Item item, int quantity, int userAge)
+        {
+            if (item == null || quantity == 0 || userAge < item.AgeLimit) return;
+
+            for(var i=1; i<= quantity; i++)
+                _items.Add(item);
+        }
 
         public IEnumerable<IDiscountCalculator> AvailableSpecialOffers()
         {
             yield return new SpecialOffer { SKU = "A99", Quantity = 3, OfferPrice = 1.30m };
             yield return new SpecialOffer { SKU = "B15", Quantity = 2, OfferPrice = .45m };
+            yield return new SpecialOffer { SKU = "D20", Quantity = 4, OfferPrice = 1.20m};
+            //yield return new BuyTwoGetThirdHalfPriceOffer {SKU = "C40"};
         }
 
     }

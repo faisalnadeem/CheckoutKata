@@ -5,12 +5,6 @@ using System.Text;
 
 namespace CheckoutKata.Code
 {
-    public interface IDiscountCalculator
-    {
-        bool IsApplicable(List<Item> items);
-        decimal CalculateDiscount(List<Item> items);
-    }
-
     public class SpecialOffer : IDiscountCalculator
     {
         public string SKU { get; set; }

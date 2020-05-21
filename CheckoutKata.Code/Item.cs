@@ -6,5 +6,6 @@ namespace CheckoutKata.Code
     {
         public string SKU { get; set; }
         public decimal UnitPrice { get; set; }
+        public int AgeLimit { get; set; }
     }
 }

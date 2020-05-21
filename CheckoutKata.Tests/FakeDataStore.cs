@@ -12,6 +12,7 @@ namespace CheckoutKata.Tests
                 new Item{SKU = "A99", UnitPrice=.50m},
                 new Item{SKU = "B15", UnitPrice=.30m},
                 new Item{SKU = "C40", UnitPrice=.60m},
+                new Item{SKU = "D20", UnitPrice=.40m, AgeLimit = 16},
             };
         }
     }
