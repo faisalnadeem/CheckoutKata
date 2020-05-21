@@ -5,11 +5,12 @@ A supermarket requires a working checkout. MVP is to scan products and periodica
 A supermarket requires a working checkout. MVP is to scan products and periodically ask for a total price, considering any special offers that apply to the product.
 
 ## Items:
-|SKU	|Unit Price|
-|-|-|
-|A99	|0.50|
-|B15	|0.30|
-|C40	|0.60|
+|SKU	|Unit Price|  Age Limit|
+|-|-|-|
+|A99	|0.50||
+|B15	|0.30||
+|C40	|0.60||
+|D20	|0.40|  16|
 
 ## Special Offers:
 |SKU	|Quantity	|Offer Price
